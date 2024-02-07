@@ -85,13 +85,40 @@ docker container stats 'id do container'
 ```
 docker container top 'id do container'
 ```
+</details>
+<details>
+  <summary>Imagem</summary>
+
 ##### Construir uma imagem
 ```
 mkdir exemplofile
 cd exemplofile
-vim exfile
-docker image build -t exemplo:1.0 .
+vim Dockerfile
+docker image build -t <nome da imagem>:<versão> .
 ```
+##### Dockerfile
+###### Por definição, imagem é um arquivo que inclui código, bibliotecas, dependências                                    e configurações. Quando executamos o 'vim' do comando anterior, precisamos deixar setado algumas especificações dentro da imagem.
+- FROM -> imagem base
+- RUN -> comandos de construção
+- COPY -> copia arquivos para dentro da imagem
+- WORKDIR -> define diretório
+- EXPOSE -> configura a porta
+- CMD -> comando padrão
+
+##### Baixar imagens
+```
+docker pull <nome da imagem>
+```
+##### Ver todas as imagens
+```
+docker image ls
+```
+##### Remover imagem
+```
+docker rmi <id ou nome da imagem>
+```
+
+
 </details>
 <details>
   <summary>Volumes</summary>
