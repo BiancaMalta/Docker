@@ -6,5 +6,5 @@ docker run -d --rm -p 3000:80 --name apache01 httpd
 docker run -d --rm -p 4000:80 --name apache02 httpd
 docker run -d --rm -p 5000:80 --name apache03 httpd
 ```
-Digitando na web localhost:< porta especificada no ex.> , o resultado foi:
-[imagem do apache]()
+###### Digitando na web localhost:< porta especificada no ex.> , o resultado foi: 
+![imagem do apache](https://github.com/BiancaMalta/Docker/blob/main/imagem1.png)
