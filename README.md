@@ -4,7 +4,7 @@
 [Documentação do Docker](https://docs.docker.com/)
 <details>
   <summary> Comandos básicos </summary>
-<img align="right" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="400" height="250" />
+<img align="right" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="370" height="250" />
 
 #### Enquanto as máquinas virtuais solucionaram o empecilho do uso de vários servidores físicos, o docker veio para solucionar o custo e o tempo gasto com a instalação, manutenção e configuração dos sistemas operacionais. A partir disso, surgiram os `containers`, responsáveis por emular uma aplicação com praticidade e portabilidade, bastando apenas um comando para que o ambiente inteiro em que um projeto foi construido, com suas versões e aplicações instaladas esteja rodando em outro lugar, caindo por terra a famosa frase "Mas na minha máquina funciona".
 
