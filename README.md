@@ -108,7 +108,7 @@ docker image build -t <nome da imagem>:<versão> .
 ```
 ##### Dockerfile
 ###### Por definição, imagem é um arquivo que inclui código, bibliotecas, dependências e configurações. Quando executamos o 'vim' do comando anterior, precisamos deixar setado algumas especificações dentro da imagem.
-<img align="right" src="https://github.com/BiancaMalta/Docker/blob/main/imagem2.png" width="320" height="240" />
+<img align="right" src="https://github.com/BiancaMalta/Docker/blob/main/imagem2.png" width="340" height="260" />
 
 - FROM -> imagem base
 - RUN -> comandos de construção
@@ -119,7 +119,7 @@ docker image build -t <nome da imagem>:<versão> .
 - VOLUME -> caminho para criar um volume  
 - EXPOSE -> configura a porta
 - ENTRYPOINT -> principal processo
-- CMD -> passa parametros para o entrypoint
+- CMD -> parametros para o entrypoint
 
 ##### Baixar imagens
 ```
