@@ -4,7 +4,7 @@
 [Documentação do Docker](https://docs.docker.com/)
 <details>
   <summary> Comandos básicos </summary>
-<img align="left" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="400" height="200" />
+<img align="left" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="500" height="300" />
 
 #### Enquanto as máquinas virtuais solucionaram o empecilho do uso de vários servidores físicos, o docker veio para solucionar o custo e o tempo gasto com a instalação, manutenção e configuração dos sistemas operacionais. A partir disso, surgiram os `containers`, responsáveis por emular uma aplicação com praticidade e portabilidade, bastando apenas um comando para que o ambiente inteiro em que um projeto foi construido, com suas versões e aplicações instaladas esteja rodando em outro lugar, caindo por terra a famosa frase "Mas na minha máquina funciona".
 
@@ -97,7 +97,7 @@ docker container top 'id do container'
 
 ##### Construir uma imagem
 
-<img align="left" src="https://i.stack.imgur.com/F837U.png"  width="200" height="150" />
+<img align="left" src="https://i.stack.imgur.com/F837U.png"  width="180" height="130" />
 
 ##### Na construção de uma imagem, cada linha de instrução do Dockerfile, é responsável por criar uma camada, sendo todas read-only (não podem ser sobrescrita, a imagem é imutável), execeto a mais superficial, que será read-write (a que torna o container real). Contudo, a camada que o usuário possui permissão para interagir é excluída quando o container é removido, configuração esta, que os tornam muito eficientes em termos de recursos, pois vários contêineres podem ser executados usando a mesma imagem.  
 ```
