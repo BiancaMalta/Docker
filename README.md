@@ -140,7 +140,7 @@ docker rmi <id ou nome da imagem>
 #### Como já mencionado, a camada read-write não foi projetada para armazenar dados persistentes. Caso haja a necessidade, é recomendado a utilização de `Volumes`, sua aplicação gera logs e arquivos de saída, permitindo a conservação dos dados, o compartilhamento do código fonte e o compartilhamento de dados entre os containers. Dependendo do caminho onde ele estará localizado, será um volume gerenciados pelo Docker ou volumes tipo bind.
 
 ##### Tipo bind
-###### Esse volume apontam para um local especificado pelo usuário, sendo ótimo na hipotese de apontar vários containers para um armazenamento, entretanto tem riscos de sobreescrever dados.
+###### Esse volume apontam para um local especificado pelo usuário, sendo ótimo na hipotese de apontar vários containers para um armazenamento, entretanto tem riscos de sobreescrever dados e é administrado somente pelo usuário.
 ```
 mkdir exemplo2
 docker container run -it -v $(pwd)/exemplo2:<diretóriodentro do container> <nome da imagem>
@@ -150,6 +150,7 @@ docker container run -it -v $(pwd)/exemplo2:<diretóriodentro do container> <nom
 ##### Gerenciado pelo Docker
 ###### Criados automaticameno pelo daemon Docker, esse tipo de volume vincula-se apenas a um único container
 ```
+# anônimo
 docker run -it -v /<diretóriodentro do container> <nome da imagem>
 # nomeado
 docker volume create <nome volume>
@@ -168,7 +169,7 @@ docker exec -it <nome do terminal> /bin/bash
 # entre dentro da pasta que foi destinado o volume
 cd <caminho>/
 # crie uma pasta qualquer
-echo "Testando Volume" >> teste.txt
+echo "Testando Volume" > teste.txt
 # saia do container e vá ao diretorio do volume
 # é esperado que todas as alterações do container estejam na máquina local
 ```
