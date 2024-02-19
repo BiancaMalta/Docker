@@ -236,15 +236,17 @@ docker-machine create --drive amazone2 aws01
 <details>
   <summary>Redes</summary>
 
-#### Por padrao, quando instalamos o docker ele cria três tipos de rede:
+#### Existem tem pilares para o uso de `redes`:
+- Comunicação entre containers/ host/ plataforma
+- Isolamento de container
+- Orquestração do ambiente
+#### Destrinchando essas caracteristicas, temos algumos tipos de redes:
 #####  Bridge (rede padrão) 
-###### Comunicação interna entre containers
+###### Comunicação entre containers no mesmo host.
 ##### None 
-###### isolado, nao possui acesso nem externo e nem de outros containers, não tem IP
+###### Isolado, nao possui acesso nem externo e nem de outros containers, não tem IP. Muito útil quando não há a necessidade de conectividade de rede dentro do container.
 ##### Host
-###### faz uma ponte/ IP do container = IP da máquina </br>
-###### não consigo iniciar vários containers com a mesma porta</br>
-###### Logo, se eu executar os seguintes comandos:
+###### Faz uma ponte/ IP do container = IP da máquina. Não sendo possível iniciar vários containers com a mesma porta. Logo, se eu executar os seguintes comandos:
 ```
 docker container run --name net_host1 -d --network host nginx:alpine
 docker container run --name net_host2 -d --network host nginx:alpine
@@ -285,7 +287,7 @@ docker network create -d bridge networl_web
 docker container run -d --name webhost1 --network network_web nginx:alpine
 docker container run -d --name webhost2 --network network_web nginx:alpine
 ```
-###### Agora, idependente da ordem que for efetuada o teste de ping, o comando irá funcionar
+###### Agora, independente da ordem que for efetuada o teste de ping, o comando irá funcionar
 </details>
 <details>
   <summary>Docker Compose</summary>
