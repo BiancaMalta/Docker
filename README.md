@@ -312,6 +312,12 @@ services:
     image: redis
 ```
 #### Comandos: 
+##### Primeiros passos
+```
+docker-compose version
+#se for preciso
+-> instalar
+```
 ##### Parar todos os containers
 ```
 docker-compose stop
