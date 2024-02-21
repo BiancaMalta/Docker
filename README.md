@@ -271,6 +271,13 @@ docker network rm <nome da rede>
 # Todas que não estão sendo utilizadas
 docker network prune
 ```
+##### Para desconectar/conectar um container em uma rede
+```
+# Desconectar
+docker network disconect <nome do container>
+# Conectar
+docker network conect <nome do container>
+```
 ##### Comunicação DNS
 ```
 docker container run -d --name webhost1 nginx:alpine
