@@ -321,10 +321,9 @@ services:
 #### Comandos: 
 ##### Primeiros passos
 ```
-docker-compose version
-#se for preciso
--> instalar
+docker-compose --version
 ```
+###### Se for preciso instalar, acesse a [documentação](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually)
 ##### Parar todos os containers
 ```
 docker-compose stop
