@@ -324,6 +324,18 @@ services:
 docker-compose --version
 ```
 ###### Se for preciso instalar, acesse a [documentação](https://docs.docker.com/compose/install/linux/#install-the-plugin-manually)
+##### Executar o docker-compose
+```
+docker-compose up
+```
+###### Para executar em segundo plano, basta colocar a flag `-d`
+###### Na hipótese de ter ocorrido alguma alguma alteração na imagem, use a flag `--build`
+
+##### Matar os containers que subiu com o comando anterior
+```
+docker-compose down
+```
+###### Os volumes nao são perdidos com esse comando
 ##### Parar todos os containers
 ```
 docker-compose stop
