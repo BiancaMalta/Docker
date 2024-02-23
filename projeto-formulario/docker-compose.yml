@@ -1,0 +1,41 @@
+version: '3.3'
+
+networks:
+  rede:
+    driver: bridge
+
+volumes:
+  db_data: {}
+
+services:
+  db:
+    build: 
+      context: banco-de-dados
+      dockerfile: ./Dockerfile
+    container_name: container-bd
+    image: imagem-mysql:latest
+    volumes:
+      - db_data:/var/lib/mysql/data
+    restart: always
+    env_file:
+      - ./config/db.env
+    networks:
+      - rede
+
+  wordpress:
+    depends_on:
+      - db
+    build: 
+      context: aplicacao
+      dockerfile: ./Dockerfile
+    image: imagem-php:latest
+    container_name: container-php
+    ports:
+      - "5000:5000"
+    restart: always
+    env_file:
+      - ./config/app.env
+    networks:
+      - rede
+
+
