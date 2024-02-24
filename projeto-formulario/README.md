@@ -32,27 +32,31 @@ git clone https://github.com/BiancaMalta/Docker.git
 ###### O Docker Compose utiliza algumas variáveis de ambiente para configurar os serviços de aplicação e banco de dados. Usar a configuração fornecida não é o ideal no quesito segurança, recomendo personalizá-la. Com esse propósito, abra o terminal na pasta `config` e navegue pelos arquivos `db.env`, o qual possui as variáveis do banco de dados, e `php.env`, responsável pelos ajustes na aplicação.
 3. No diretório raiz execute o `docker-compose.yml`
 ```
-docker-compose up -d 
+docker-compose up 
 ```
-###### Para executar em segundo plano, basta colocar a flag `-d` e na hipótese de que, após esse processo, você efetue alguma alteração nas imagens, ao rodar novamente, use a flag `--build`
+###### Para executar em segundo plano, basta colocar a flag `-d` e na hipótese de que, após esse processo, você efetue alguma alteração nas imagens, ao rodar novamente, use a flag `--build`. 
+###### A partir desse comando, vão ser criados:
+- as `imagens` e os `containers`
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/28703980-fc08-46b6-afcb-4c3eda6a08ae" width="70%" > 
+
+- o `volume named`
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/85149539-26ab-46df-b740-a7b2da15d032" width="70%" > 
+
+- o `drive de rede` especificado 
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/2e197060-10a0-4903-84a8-3cb811839bd8" width="30%" >
+<img align="right" src="https://github.com/BiancaMalta/Docker/assets/92928037/3a0cac94-838c-4e5e-b80c-45497d7892be" width="50%" >
+
+###### A qual os containers criados vão se conectar
+<img  src="https://github.com/BiancaMalta/Docker/assets/92928037/b7421561-02c0-4c58-bfbc-d2c51dce5c88" width="70%" > 
 
 4. Após inicializar, você poderá acessar a aplicação navegando para `http://localhost:5000` no seu navegador.
 
+ *imagem da interface e da tabela* 
 5. Para encerrar o projeto, execute:
 ```
 docker-compose down
 ```
-###### Cração das imagens e dos containers
-![image](https://github.com/BiancaMalta/Docker/assets/92928037/28703980-fc08-46b6-afcb-4c3eda6a08ae)
-###### Ao inspecionar a rede:
-###### dois containers conectados
-![image](https://github.com/BiancaMalta/Docker/assets/92928037/b7421561-02c0-4c58-bfbc-d2c51dce5c88)
-###### o tipo de rede 
-![image](https://github.com/BiancaMalta/Docker/assets/92928037/2e197060-10a0-4903-84a8-3cb811839bd8)
-![image](https://github.com/BiancaMalta/Docker/assets/92928037/3a0cac94-838c-4e5e-b80c-45497d7892be)
-###### Criou um volume nomeado
-![image](https://github.com/BiancaMalta/Docker/assets/92928037/85149539-26ab-46df-b740-a7b2da15d032)
-
+###### Ao usar a flag `-v` o volume também é deletado. 
 ## Documentação Adicional
 
 Como solicitado, as imagens do [projeto PHP]() e do [banco PostgreeSQL]() estão disponibilizadas e documentadas no meu [Docker Hub]().
