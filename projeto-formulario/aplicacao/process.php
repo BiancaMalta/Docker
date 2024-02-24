@@ -1,11 +1,10 @@
-
 <?php
 
 function mysqlConnect()
 {
   $db_host = "db";
   $db_user = "root";
-  $db_password = "";
+  $db_password = "root";
   $db_name = "banco_de_dados";
 
   // dsn é apenas um acrônimo de database source name
@@ -27,6 +26,18 @@ function mysqlConnect()
   }
 }
 
+
+function mysqlConnect2(){
+  $hostname = "localhost";
+  $bancodedados = "banco_de_dados";
+  $usuario = "root";
+  $senha = "";
+  $mysqli = new mysqli($hostname, $usuario, $senha, $bancodedados);
+  if($mysqli->connect_errno) {
+    echo "Falha ao conectar: (" . $msqli->connect_errno . ")" . $mysqli->connect_error;
+    }
+}
+
 $pdo = mysqlConnect();
 
 $nome = $_POST["nome"] ?? "";
@@ -45,7 +56,7 @@ try {
   -- Repare que a coluna Id foi omitida por ser auto_increment
   INSERT INTO cliente (nome, cpf, email, hash_senha, 
                        data_nascimento, estado_civil)
-  VALUES (?, ?, ?, ?, ?, ?, ?)
+  VALUES (?, ?, ?, ?, ?, ?)
   SQL;
 
   // Neste caso utilize prepared statements para prevenir
@@ -57,7 +68,7 @@ try {
     $datanascimento, $estadocivil,
   ]);
 
-  header("location: mostra-clientes.php");
+  header("location: index.html");
   exit();
 } 
 catch (Exception $e) {
