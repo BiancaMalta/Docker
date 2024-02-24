@@ -38,4 +38,40 @@ services:
     networks:
       - rede
 
+##### o correto é a partir daqui
+
+version: '3.3'
+
+networks:
+  rede:
+    driver: bridge
+
+
+
+services:
+  db:
+    build: 
+      context: banco-de-dados
+      dockerfile: ./Dockerfile
+    container_name: container-bd
+    image: imagem-mysql:latest
+    env_file:
+      - ./config/db.env
+    networks:
+      - rede
+
+  aplicacao:
+    depends_on:
+      - db
+    build: 
+      context: aplicacao
+      dockerfile: ./Dockerfile
+    image: imagem-php:latest
+    container_name: container-php
+    ports:
+      - "80:80"
+    env_file:
+      - ./config/app.env
+    networks:
+      - rede
 
