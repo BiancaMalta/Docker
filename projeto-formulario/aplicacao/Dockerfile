@@ -1,15 +1,15 @@
-# define a imagem base e a versão
-FROM php:8.2-cli
+# Define a imagem base e a versão
+FROM php:8-apache
+
+# Copia o index.html e o cadastra-cliente.php no workdir
+COPY . .
 
 # Define o diretório principal do container
-WORKDIR /var/www/html/
-
-# Copia o index.html e o process.php no workdir
-COPY . .
+WORKDIR /var/www/html
 
 # Atualiza a imagem com os pacotes
 RUN chown -R www-data:www-data /var/www
 
 # Mapeamento da porta
-EXPOSE 5000
+EXPOSE 80
 
