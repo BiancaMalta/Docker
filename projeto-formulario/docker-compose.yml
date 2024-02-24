@@ -4,8 +4,7 @@ networks:
   rede:
     driver: bridge
 
-volumes:
-  db_data: {}
+
 
 services:
   db:
@@ -13,50 +12,14 @@ services:
       context: banco-de-dados
       dockerfile: ./Dockerfile
     container_name: container-bd
+    ports:
+      - "3306:3306"
     image: imagem-mysql:latest
     volumes:
-      - db_data:/var/lib/mysql/data
-    restart: always
+      - db_data:/var/lib/mysql
     env_file:
       - ./config/db.env
-    networks:
-      - rede
-
-  wordpress:
-    depends_on:
-      - db
-    build: 
-      context: aplicacao
-      dockerfile: ./Dockerfile
-    image: imagem-php:latest
-    container_name: container-php
-    ports:
-      - "5000:5000"
     restart: always
-    env_file:
-      - ./config/app.env
-    networks:
-      - rede
-
-##### o correto é a partir daqui
-
-version: '3.3'
-
-networks:
-  rede:
-    driver: bridge
-
-
-
-services:
-  db:
-    build: 
-      context: banco-de-dados
-      dockerfile: ./Dockerfile
-    container_name: container-bd
-    image: imagem-mysql:latest
-    env_file:
-      - ./config/db.env
     networks:
       - rede
 
@@ -70,8 +33,9 @@ services:
     container_name: container-php
     ports:
       - "80:80"
-    env_file:
-      - ./config/app.env
+
     networks:
       - rede
 
+volumes:
+  db_data: {}
