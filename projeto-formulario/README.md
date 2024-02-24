@@ -36,22 +36,28 @@ docker-compose up
 ```
 ###### Para executar em segundo plano, basta colocar a flag `-d` e na hipótese de que, após esse processo, você efetue alguma alteração nas imagens, ao rodar novamente, use a flag `--build`. 
 ###### A partir desse comando, vão ser criados:
-- as `imagens` e os `containers`
-<img src="https://github.com/BiancaMalta/Docker/assets/92928037/28703980-fc08-46b6-afcb-4c3eda6a08ae" width="70%" > 
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/db236fa4-5ca6-44be-88c0-ccce162e7bb8" width="40%" >
 
-- o `volume named`
-<img src="https://github.com/BiancaMalta/Docker/assets/92928037/85149539-26ab-46df-b740-a7b2da15d032" width="70%" > 
+###### Inspecionando cada tópico com mais detalhe, veremos:
+- as `imagens` com seus respectivos os `containers`,
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/28703980-fc08-46b6-afcb-4c3eda6a08ae" width="50%" > 
 
-- o `drive de rede` especificado 
-<img src="https://github.com/BiancaMalta/Docker/assets/92928037/2e197060-10a0-4903-84a8-3cb811839bd8" width="30%" >
-<img align="right" src="https://github.com/BiancaMalta/Docker/assets/92928037/3a0cac94-838c-4e5e-b80c-45497d7892be" width="50%" >
+- o `volume named` exigido,
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/85149539-26ab-46df-b740-a7b2da15d032" width="50%" > 
+
+- e o `drive de rede` especificado
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/3e8ddf6d-fb3f-4b04-b64f-7600257663a8" width="50%" >
 
 ###### A qual os containers criados vão se conectar
-<img  src="https://github.com/BiancaMalta/Docker/assets/92928037/b7421561-02c0-4c58-bfbc-d2c51dce5c88" width="70%" > 
+<img  src="https://github.com/BiancaMalta/Docker/assets/92928037/b7421561-02c0-4c58-bfbc-d2c51dce5c88" width="50%" > 
 
-4. Após inicializar, você poderá acessar a aplicação navegando para `http://localhost:5000` no seu navegador.
+4. Após inicializar, você poderá acessar a aplicação navegando para `http://localhost:80` no seu navegador.
+###### A interface da aplicação 
+<img  src="https://github.com/BiancaMalta/Docker/assets/92928037/4c4e9281-9896-49e6-afa9-68d400c6e65b" width="50%">
 
- *imagem da interface e da tabela* 
+######  A organização e o armazenamento do fluxo de dados feita pelo MySQL
+<img  src="https://github.com/BiancaMalta/Docker/assets/92928037/c0a5e2a5-07b3-4572-a3ee-f37efa00b732" width="80%">
+
 5. Para encerrar o projeto, execute:
 ```
 docker-compose down
@@ -59,7 +65,7 @@ docker-compose down
 ###### Ao usar a flag `-v` o volume também é deletado. 
 ## Documentação Adicional
 
-Como solicitado, as imagens do [projeto PHP]() e do [banco PostgreeSQL]() estão disponibilizadas e documentadas no meu [Docker Hub]().
+Como solicitado, as imagens do [projeto PHP]() e do [banco PostgreeSQL]() estão disponibilizadas e documentadas no meu [Docker Hub](https://hub.docker.com/u/biancamalta).
 
 ## Referências
 
