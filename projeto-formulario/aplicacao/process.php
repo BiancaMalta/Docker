@@ -3,10 +3,10 @@
 
 function mysqlConnect()
 {
-  $db_host = "mysql_api_container";
-  $db_username = "root";
+  $db_host = "db";
+  $db_user = "root";
   $db_password = "";
-  $db_name = "phpdocker";
+  $db_name = "banco_de_dados";
 
   // dsn é apenas um acrônimo de database source name
   $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";
@@ -18,7 +18,7 @@ function mysqlConnect()
   ];
 
   try {
-    $pdo = new PDO($dsn, $db_username, $db_password, $options);
+    $pdo = new PDO($dsn, $db_user, $db_password, $options);
     return $pdo;
   } 
   catch (Exception $e) {
@@ -27,8 +27,6 @@ function mysqlConnect()
   }
 }
 
-
-require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
 $nome = $_POST["nome"] ?? "";
