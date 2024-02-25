@@ -1,7 +1,11 @@
 # Docker
+<img align="right" src="https://i.picasion.com/pic92/464c9f3c112406d4aa886558a6da44c8.gif" width="27%" />
+
 ### Durante o terceiro módulo do programa de capacitação DevOps da B3 em parceria com a Ada Tech, desenvolvemos algumas atividades de Docker. Nesse diretório, organizei em pastas os arquivos de cada atividade e abaixo deixei uma breve explicação sobre o tema. 
 [Capacitação DevOps](https://ada.tech/sou-aluno/programas/b3-deva) </br>
 [Documentação do Docker](https://docs.docker.com/)
+
+## Do Zero a Marinheiro
 <details>
   <summary> Comandos básicos </summary>
 <img align="left" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="350" height="200" />
