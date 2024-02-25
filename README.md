@@ -6,13 +6,13 @@
   <summary> Comandos básicos </summary>
 <img align="left" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="350" height="200" />
 
-#### Enquanto as máquinas virtuais solucionaram o empecilho do uso de vários servidores físicos, o docker veio para solucionar o custo e o tempo gasto com a instalação, manutenção e configuração dos sistemas operacionais. A partir disso, surgiram os `containers`, responsáveis por emular uma aplicação com praticidade e portabilidade, bastando apenas um comando para que o ambiente inteiro em que um projeto foi construido, com suas versões e aplicações instaladas esteja rodando em outro lugar, caindo por terra a famosa frase "Mas na minha máquina funciona".
+#### Enquanto as máquinas virtuais solucionaram o empecilho do uso de vários servidores físicos, o `Docker` veio para solucionar o custo e o tempo gasto com a instalação, manutenção e configuração dos sistemas operacionais. A partir disso, surgiram os `containers`, responsáveis por emular uma aplicação com praticidade e portabilidade, bastando apenas um comando para que o ambiente inteiro em que um projeto foi construído, com suas versões e aplicações instaladas, esteja rodando em outro lugar, caindo por terra a famosa frase "Mas na minha máquina funciona".
 
 ##### Listar os containers em execução
 ```
-#sintase antiga
+#síntase antiga
 docker ps 
-#sintase nova
+#síntase nova
 docker container ls 
 ```
 ##### Listar todos os containers
@@ -37,7 +37,6 @@ docker container run
 > [!TIP]
 > Para sair de um container basta usar Ctrl + pq, já para matar Ctrl + d* </br>
 
-[imagem demonstrando]()
 ##### Parar um container
 ```
 docker container stop 'nome/id do container'
@@ -62,15 +61,17 @@ docker container restart 'nome/id do container'
 docker container attach 'nome/id do container'
 ```
 > [!IMPORTANT]
-> Após a criarção do container, se for necessário alterar as configurações, use:
+> Após a criação do container, se for necessário alterar as configurações, use:
 > ```
 > docker container update --cpus 0.2 'id do container'
 > ```
-##### Conectar ao container em segundo plano
+##### Executar um comando no container
 ```
-docker container exec -ti 'id do container''comando que quero executar'
+docker container exec -it 'id do container''comando que quero executar'
 ```
-[imagem demonstrando]()
+###### Dessa forma, é possível entrar no bash do container
+<img src="https://github.com/BiancaMalta/Docker/assets/92928037/822d2426-89ce-4a33-a35e-31c60fc396bb" width="70%" />
+
 ##### Inspecionar
 ```
 docker container inspect 'id do container'
@@ -97,7 +98,7 @@ docker container top 'id do container'
 
 <img align="left" src="https://i.stack.imgur.com/F837U.png"  width="180" height="130" />
 
-#### Na construção de uma imagem, cada linha de instrução do Dockerfile, é responsável por criar uma camada, sendo todas read-only (não podem ser sobrescrita, a imagem é imutável), execeto a mais superficial, que será read-write (a que torna o container real). Contudo, a camada que o usuário possui permissão para interagir é excluída quando o container é removido, configuração esta, que os tornam muito eficientes em termos de recursos, pois vários contêineres podem ser executados usando a mesma imagem.  
+#### Na construção de uma `imagem`, cada linha de instrução do `Dockerfile`, é responsável por criar uma camada, sendo todas read-only (não podem ser sobrescrita, a imagem é imutável), execeto a mais superficial, que será read-write (a que torna o container real). Contudo, a camada que o usuário possui permissão para interagir é excluída quando o container é removido, configuração esta, que os tornam muito eficientes em termos de recursos, pois vários contêineres podem ser executados usando a mesma imagem.  
 ##### Construir uma imagem
 ```
 mkdir exemplofile
@@ -111,14 +112,14 @@ docker image build -t <nome da imagem>:<versão> .
 
 - FROM -> imagem base
 - RUN -> comandos de construção
-- ENV -> variavel de ambiente
+- ENV -> variável de ambiente
 - COPY -> arquivo copiado e caminho 
 - WORKDIR -> define diretório
 - LABEL -> descrição da imagem
 - VOLUME -> caminho para criar um volume  
 - EXPOSE -> configura a porta
 - ENTRYPOINT -> principal processo
-- CMD -> parametros para o entrypoint
+- CMD -> parâmetros para o entrypoint
 
 ##### Baixar imagens
 ```
@@ -140,7 +141,7 @@ docker rmi <id ou nome da imagem>
 #### Como já mencionado, a camada read-write não foi projetada para armazenar dados persistentes. Caso haja a necessidade, é recomendado a utilização de `Volumes`, sua aplicação gera logs e arquivos de saída, permitindo a conservação dos dados, o compartilhamento do código fonte e o compartilhamento de dados entre os containers. Dependendo do caminho onde ele estará localizado, será um volume gerenciados pelo Docker ou volumes tipo bind.
 
 ##### Tipo bind
-###### Esse volume apontam para um local especificado pelo usuário, sendo ótimo na hipotese de apontar vários containers para um armazenamento, entretanto tem riscos de sobreescrever dados e é administrado somente pelo usuário.
+###### Esse volume apontam para um local especificado pelo usuário, sendo ótimo na hipótese de apontar vários containers para um armazenamento, entretanto tem riscos de sobreescrever dados e é administrado somente pelo usuário.
 ```
 mkdir exemplo2
 docker container run -it -v $(pwd)/exemplo2:<diretóriodentro do container> <nome da imagem>
@@ -193,14 +194,13 @@ docker container run -ti --mount type-volume,src=exemplo3,dst=/exemplo2 ubuntu
 ```
 docker volume prune
  ```
-#### Criar um backup
-```
-type=volume,src=dbdados,dst=/data --mount type=bind,src=/opt/backup,dst=/backup debian tar - cvf /bakup/bkp-banco.tar /data
-```
 </details> 
 <details>
   <summary>Dockerhub</summary>
-  
+<img align="right" src="https://github.com/BiancaMalta/Docker/assets/92928037/808f312c-44bb-4f9c-aae3-b3616a41e516"  width="45%" />
+
+#### O `Docker Hub` é um repositório público e privado de imagens de containers, onde diversas empresas e pessoas podem publicar imagens pré-compiladas de soluções.Para maiores informações clique [aqui](https://www.docker.com/products/docker-hub/).
+ 
 ##### Subindo uma imagem
 
 ###### Para isso será necessário criar uma chave pública
@@ -213,25 +213,31 @@ pass init <chave pública>
 ```
 ###### Agora podemos fazer o login e publicar a imagem
 ```
-docker log
+docker login
 docker image tag <id da imagem> <usuário do Dockerhub/nome da imagem:versão>
 docker push <usuário do Dockerhub/imagem:versão>
+```
+###### Para baixar a imagem disponibilizada
+```
+docker pull <usuário do Dockerhub/imagem:versão>
 ```
 </details>
 <details>
   <summary>Docker Machine</summary>
 
-#### Ferramenta para operar maquinas virtuais rodando Docker
-##### Para começar, pasta passar suas credenciais 
+<img align="left" src="https://github.com/BiancaMalta/Docker/assets/92928037/b3c4c302-fa39-4769-a68f-ee673f68cdcf"  width="30%" />
+
+#### O `Docker Machine` é uma ferramente para operar máquinas virtuais com Docker, sendo compatível com diferentes provedores de infraestrutura (Amazon Web Services, Google Cloud Platform e Microsoft Azure). Por conseguinte, possibilita a escalabilidade, além disso, ele oferece suporte a diversos sistemas operacionais.
+##### Para começar, basta passar suas credenciais 
 ```
 aws_acess_key_id = <seu id>
 aws_secret_access_key = <sua senha>
 ```
-##### Para criar uma nova máquina
+##### Criar uma nova máquina
 ```
 docker-machine create --drive amazone2 aws01
 ```
-##### Tem várias opções, para conferir entre na [documentação](https://github.com/Nordstrom/docker-machine/blob/master/docs/drivers/aws.md)
+##### Para outras opções, confira a [documentação](https://github.com/Nordstrom/docker-machine/blob/master/docs/drivers/aws.md).
 </details>
 <details>
   <summary>Redes</summary>
@@ -248,8 +254,8 @@ docker-machine create --drive amazone2 aws01
 ##### Host
 ###### Faz uma ponte/ IP do container = IP da máquina. Não sendo possível iniciar vários containers com a mesma porta. Logo, se eu executar os seguintes comandos:
 ```
-docker container run --name net_host1 -d --network host nginx:alpine
-docker container run --name net_host2 -d --network host nginx:alpine
+docker container run -p 80:80 --name container_1 -d --network rede imagem_1:versão
+docker container run -p 80:80 --name container_2 -d --network rede imagem_2:versão
 ```
 ###### Em poucos segundos eles entraram em conflito e um dos container irá cair
 ##### Para conferir qual tipo de rede você possui
@@ -280,26 +286,26 @@ docker network conect <nome do container>
 ```
 ##### Comunicação DNS
 ```
-docker container run -d --name webhost1 nginx:alpine
-docker container run -d --name webhost2 --link webhost1 nginx:alpine
+docker container run -d --name container_1 imagem_1:versão
+docker container run -d --name container_2 --link container_1 imagem_2:versão
 ```
 ###### Para conferir, basta fazer o teste de ping dentro do container
 ```
-docker container exec -it webhost2 ping webhost1
+docker container exec -it container_1 ping container_2
 ```
 ###### A desvantagem é que o oposto nao funciona
 ###### O recomendado é criar redes próprias
 ```
-docker network create -d bridge networl_web
-docker container run -d --name webhost1 --network network_web nginx:alpine
-docker container run -d --name webhost2 --network network_web nginx:alpine
+docker network create -d bridge rede
+docker container run -d --name container_1 --network rede imagem_1:versão
+docker container run -d --name container_2 --network rede imagem_2:versão
 ```
 ###### Agora, independente da ordem que for efetuada o teste de ping, o comando irá funcionar
 </details>
 <details>
   <summary>Docker Compose</summary>
 
-#### Docker Compose é um aquivo escrito em YAML, muito semelhando ao dockerfile, que torna possível manipular vários container ao mesmo tempo. Nele está descrito toda a infraestrutura, variáveis de ambiente e está até mesmo definido o comportamento do docker caso um dos container venha a falhar. Em síntese, ao invés de o administrador executar o docker run na mão para cada container e subir os serviços separados, linkando os containers das aplicações manualmente, temos um único arquivo.
+#### Docker Compose é um aquivo escrito em YAML, muito semelhando ao Dockerfile, que torna possível manipular vários container ao mesmo tempo. Nele está descrito toda a infraestrutura, variáveis de ambiente e até mesmo definido o comportamento do Docker caso um dos container venha a falhar. Em síntese, ao invés do administrador executar o `docker run` na mão e subir os serviços separados, linkando os containers das aplicações manualmente, temos um único arquivo.
 <img align="right" src="https://github.com/BiancaMalta/Docker/blob/main/dockercompose.png" width="200" height="200" />
 
 #### Usar o Docker Compose é um processo de três etapas:
@@ -335,16 +341,16 @@ docker-compose up
 ```
 docker-compose down
 ```
-###### Os volumes nao são perdidos com esse comando
+###### Usando a flag `-v` os volumes são deletados
 ##### Parar todos os containers
 ```
 docker-compose stop
 ```
-##### Removendo todos os containers
+##### Remover todos os containers
 ```
 docker-compose rm -f
 ```
-##### Vendo o log de todos os containers
+##### Ver o log de todos os containers
 ```
 docker-compose logs -f
 ```
@@ -352,6 +358,7 @@ docker-compose logs -f
 ```
 docker-compose build
 ```
+![image](https://github.com/BiancaMalta/Docker/assets/92928037/a23e4958-c81e-416f-86a5-43d603a1cb53)
 
 </details>
 
