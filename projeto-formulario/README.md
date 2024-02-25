@@ -65,7 +65,7 @@ docker-compose down
 ###### Ao usar a flag `-v` o volume também é deletado. 
 ## Documentação Adicional
 
-Como solicitado, as imagens do [projeto PHP]() e do [banco PostgreeSQL]() estão disponibilizadas e documentadas no meu [Docker Hub](https://hub.docker.com/u/biancamalta).
+Como solicitado, as imagens do [projeto PHP](https://hub.docker.com/repository/docker/biancamalta/php-projetoformulario/general) e do [banco PostgreeSQL](https://hub.docker.com/repository/docker/biancamalta/mysql-projetoformulario/general) estão disponibilizadas e documentadas no meu [Docker Hub](https://hub.docker.com/u/biancamalta).
 
 ## Referências
 
