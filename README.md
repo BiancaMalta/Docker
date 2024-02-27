@@ -8,6 +8,9 @@
 ## Do Zero a Marinheiro 🚢📦📦
 <details>
   <summary> Comandos básicos </summary>
+
+#### A palavra contêiner facilmente traz à mente um navio com grandes caixas condicionadas ao transporte de cargas. Não por acaso que sua invenção trouxe praticidade, portabilidade e escalabilidade, uma vez que cumpre a função de separar os produtos em categorias, isolá-los do ambiente externo e permitir uma estruturação sistemática no deslocamento. No mundo da tecnologia, os contêineres também estão presentes e, analogamente, o navio é o Docker.
+
 <img align="left" src="https://4linux.com.br/wp-content/uploads/2021/08/imagem-1024x594.png" alt='Direitos reservados a página 4linux' width="350" height="200" />
 
 #### Enquanto as máquinas virtuais solucionaram o empecilho do uso de vários servidores físicos, o `Docker` veio para solucionar o custo e o tempo gasto com a instalação, manutenção e configuração dos sistemas operacionais. A partir disso, surgiram os `containers`, responsáveis por emular uma aplicação com praticidade e portabilidade, bastando apenas um comando para que o ambiente inteiro em que um projeto foi construído, com suas versões e aplicações instaladas, esteja rodando em outro lugar, caindo por terra a famosa frase "Mas na minha máquina funciona".
