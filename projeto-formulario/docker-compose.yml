@@ -1,37 +1,41 @@
 version: '3.3'
 
 networks:
-  my_network:
-  
+  rede:
+    driver: bridge
+
+
+
 services:
   db:
     build: 
       context: banco-de-dados
       dockerfile: ./Dockerfile
+    container_name: container-bd
     ports:
       - "3306:3306"
     image: imagem-mysql:latest
     volumes:
-      - mysql_data:/var/lib/mysql
-      - ./my.cnf:/etc/mysql/my.cnf
+      - db_data:/var/lib/mysql
     env_file:
       - ./config/db.env
+    restart: always
     networks:
-      - my_network  
-  
-  app:
+      - rede
+
+  aplicacao:
     depends_on:
       - db
-    build: ./aplicacao
+    build: 
+      context: aplicacao
+      dockerfile: ./Dockerfile
+    image: imagem-php:latest
+    container_name: container-php
     ports:
-      - "5000:5000"
-    volumes:
-      - ./aplicacao:/app
-      - ./uploads:/app/uploads
-    env_file:
-      - ./config/app.env
+      - "80:80"
+
     networks:
-      - my_network
-  
+      - rede
+
 volumes:
-  mysql_data: {}
+  db_data: {}
